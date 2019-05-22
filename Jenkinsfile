@@ -97,7 +97,7 @@ spec:
                 container('docker') {
                     script {
                         registryIp = sh(script: 'getent hosts registry.kube-system | awk \'{ print $1 ; exit }\'', returnStdout: true).trim()
-                        sh "docker build . -t kirlirable/habr-demo-app:${revision} --build-arg REVISION=${revision}"
+                        sh "docker build . -t kirlirable/demo-app:${revision} --build-arg REVISION=${revision}"
                     }
                 }
             }
@@ -106,7 +106,7 @@ spec:
             steps {
                 container('docker') {
                     withDockerRegistry([ credentialsId: "2e5f8c0d-e5c5-4419-95cf-97c7635f53e7", url: "" ]) {
-                        sh "docker push kirlirable/habr-demo-app:${revision}"
+                        sh "docker push kirlirable/demo-app:${revision}"
                     }
                 }
             }
@@ -114,7 +114,7 @@ spec:
         stage ('deploy to env') {
             steps {
                 build job: 'Deploy', parameters: [
-                        [$class: 'StringParameterValue', name: 'GIT_REPO', value: 'habr-demo-app'],
+                        [$class: 'StringParameterValue', name: 'GIT_REPO', value: 'demo-app'],
                         [$class: 'StringParameterValue', name: 'VERSION', value: revision],
                         [$class: 'StringParameterValue', name: 'ENV', value: params.DEPLOY_BRANCH_TO_TST ? 'test' : 'staging']
                 ], wait: false

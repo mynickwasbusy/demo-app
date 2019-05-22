@@ -23,7 +23,7 @@ spec:
               path: application.properties
       containers:
         - name: app
-          image: kirlirable/habr-demo-app:{{ .Chart.Version }}
+          image: kirlirable/demo-app:{{ .Chart.Version }}
           ports:
             - containerPort: 8080
           volumeMounts:

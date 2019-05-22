@@ -18,7 +18,7 @@ public class InfoEndpoint {
     @GetMapping("/info")
     public Info getVersion() {
         return new Info(
-                "habr-demo-app",
+                "demo-app",
                 version.getVersion(),
                 environment.getEnvironment()
         );
