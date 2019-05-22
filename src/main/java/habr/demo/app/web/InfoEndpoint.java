@@ -24,10 +24,10 @@ public class InfoEndpoint {
         );
     }
     
-    @GetMapping("/hi")
+    @GetMapping("/get")
     public Info getHi() {
         return new Info(
-                "gratz!!!",
+                "cofee!",
                 version.getVersion(),
                 environment.getEnvironment()
 
