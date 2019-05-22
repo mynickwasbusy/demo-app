@@ -33,7 +33,7 @@ class InfoEndpointIntegrationTest {
         assertThat(info)
                 .isNotNull()
                 .isEqualTo(new Info(
-                        "habr-demo-app",
+                        "demo-app",
                         version,
                         "test"
                 ));
